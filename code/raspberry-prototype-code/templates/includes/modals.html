@@ -1,0 +1,27 @@
+<style>
+  .modal-content {
+  background-color: #212121;
+      color: white
+      }
+</style>
+<!-- Modal -->
+<div class="modal fade" id="Modal-Comprar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirmar compra</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <!-- mensaje -->
+      <div class="modal-body">
+        ¿Desea continuar con la transacción?
+      </div>
+      <div class="modal-footer">
+        <!-- boton de cerrar -->
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <!-- redireccion a pagina de checkout, de espera mientras robot se mueve -->
+        <a href="{{url_for('checkout_page')}}" type="button" class="btn btn-primary">Comprar</a>
+      </div>
+    </div>
+  </div>
+</div>

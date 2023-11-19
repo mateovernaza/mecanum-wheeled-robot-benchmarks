@@ -1,0 +1,43 @@
+{% extends 'base.html'%}
+{% block title %}
+Mercado
+{% endblock %}
+{% block content %}
+
+<table class="table table-hover table-dark">
+    <thead>
+    <tr>
+        <!-- columnas -->
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Locación</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Opciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- filas -->
+    <!-- iteracion por cada producto -->
+    {% for item in items %}
+    <tr>
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td>Pasillo {{ item.pasillo }}</td>
+        <td>{{ item.price }}$</td>
+        <td>
+            <!-- boton para informacion sobre producto -->
+            <button type="button" class="btn btn-outline btn-success" data-toggle="popover" title="{{ item.name }}" data-placement="left" data-content="Posicion {{ item.posicion }} mm, Nivel {{ item.nivel }}">Info</button>
+            <!-- chequeo de estado de compra de producto -->
+            {% if item.state == False%}
+                <!-- si boton añadir se oprime entonces se envia a direccion mercado/id/add -->
+                <a href="/mercado/{{item.id}}/add" class="btn btn-outline btn-info" role="button">Añadir</a>
+            {% else %}
+                <!-- si boton remover se oprime entonces se envia a direccion mercado/id/remove -->
+                <a href="/mercado/{{item.id}}/remove" class="btn btn-outline btn-primary" role="button">Remover</a>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor%}
+    </tbody>
+</table>
+{% endblock %}
